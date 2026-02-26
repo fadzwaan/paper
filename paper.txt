@@ -1,0 +1,139 @@
+1. https://www.linkedin.com/posts/phillip-fonseca_auto-loan-debt-ugcPost-7419151353584832512-qqeP?utm_source=share&utm_medium=member_desktop&rcm=ACoAADDWl90BmREYYSbJo1uw5jDO4B1HBFV2fXA
+  - The paper is well-supported with authoritative sources (Fed, CFPB, Experian, IMF).
+  - In a few places, statistics are presented in rapid succession — a short interpretive sentence after key figures would help readers understand why they matter.
+  - A small table or chart (e.g., delinquency rates by credit tier or debt growth over time) could improve visual clarity.
+
+2. https://www.linkedin.com/posts/analytics-vidhya_rag-complete-notes-activity-7420457901967990784-LnID?utm_source=share&utm_medium=member_desktop&rcm=ACoAADDWl90BmREYYSbJo1uw5jDO4B1HBFV2fXA
+
+
+PS C:\Windows\system32> bcdedit /enum firmware
+
+Firmware Boot Manager
+---------------------
+identifier              {fwbootmgr}
+displayorder            {bootmgr}
+                        {a50481ff-87c1-11f0-83d6-d494ba401581}
+timeout                 1
+
+Windows Boot Manager
+--------------------
+identifier              {bootmgr}
+device                  partition=\Device\HarddiskVolume1
+path                    \EFI\MICROSOFT\BOOT\BOOTMGFW.EFI
+description             Windows Boot Manager
+locale                  en-US
+inherit                 {globalsettings}
+default                 {current}
+resumeobject            {1e098899-c9a9-11ef-83c3-345a602cb87f}
+displayorder            {current}
+toolsdisplayorder       {memdiag}
+timeout                 30
+
+Firmware Application (101fffff)
+-------------------------------
+identifier              {a50481ff-87c1-11f0-83d6-d494ba401581}
+device                  partition=\Device\HarddiskVolume1
+path                    \EFI\UBUNTU\SHIMX64.EFI
+description             Ubuntu
+PS C:\Windows\system32> bcdedit /delete {a50481ff-87c1-11f0-83d6-d494ba401581} /f
+The delete command specified is not valid.
+Run "bcdedit /?" for command line assistance.
+The parameter is incorrect.
+PS C:\Windows\system32> bcdedit /delete {a50481ff-87c1-11f0-83d6-d494ba401581} /cleanup
+The delete command specified is not valid.
+Run "bcdedit /?" for command line assistance.
+The parameter is incorrect.
+PS C:\Windows\system32> bcdedit /set {fwbootmgr} displayorder {bootmgr}
+bcdedit.exe : The command parameter was already specified.
+At line:1 char:1
++ bcdedit /set {fwbootmgr} displayorder {bootmgr}
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [], ParameterBindingException
+    + FullyQualifiedErrorId : ParameterSpecifiedAlready
+
+PS C:\Windows\system32> bcdedit /enum firmware
+
+Firmware Boot Manager
+---------------------
+identifier              {fwbootmgr}
+displayorder            {bootmgr}
+                        {a50481ff-87c1-11f0-83d6-d494ba401581}
+timeout                 1
+
+Windows Boot Manager
+--------------------
+identifier              {bootmgr}
+device                  partition=\Device\HarddiskVolume1
+path                    \EFI\MICROSOFT\BOOT\BOOTMGFW.EFI
+description             Windows Boot Manager
+locale                  en-US
+inherit                 {globalsettings}
+default                 {current}
+resumeobject            {1e098899-c9a9-11ef-83c3-345a602cb87f}
+displayorder            {current}
+toolsdisplayorder       {memdiag}
+timeout                 30
+
+Firmware Application (101fffff)
+-------------------------------
+identifier              {a50481ff-87c1-11f0-83d6-d494ba401581}
+device                  partition=\Device\HarddiskVolume1
+path                    \EFI\UBUNTU\SHIMX64.EFI
+description             Ubuntu
+PS C:\Windows\system32> mountvol S: /S
+PS C:\Windows\system32> S:
+PS S:\> cd EFI
+PS S:\EFI> dir
+
+
+    Directory: S:\EFI
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+da----        11/12/2025   6:44 PM                Microsoft
+d-----          4/9/2025   4:44 AM                Boot
+d-----          4/9/2025   4:44 AM                ubuntu
+
+
+PS S:\EFI> rmdir /s /q ubuntu
+Remove-Item : A positional parameter cannot be found that accepts argument '/q'.
+At line:1 char:1
++ rmdir /s /q ubuntu
++ ~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [Remove-Item], ParameterBindingException
+    + FullyQualifiedErrorId : PositionalParameterNotFound,Microsoft.PowerShell.Commands.RemoveItemCommand
+
+PS S:\EFI> dir
+
+
+    Directory: S:\EFI
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+da----        11/12/2025   6:44 PM                Microsoft
+d-----          4/9/2025   4:44 AM                Boot
+d-----          4/9/2025   4:44 AM                ubuntu
+
+
+PS S:\EFI> rmdir .\ubuntu\
+
+Confirm
+The item at S:\EFI\ubuntu\ has children and the Recurse parameter was not specified. If you continue, all children
+will be removed with the item. Are you sure you want to continue?
+[Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "Y"): Y
+PS S:\EFI> ls
+
+
+    Directory: S:\EFI
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+da----        11/12/2025   6:44 PM                Microsoft
+d-----          4/9/2025   4:44 AM                Boot
+
+
+PS S:\EFI> mountvol S: /D
+PS S:\EFI> bcdedit /enum firmware
