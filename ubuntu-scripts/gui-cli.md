@@ -8,7 +8,7 @@ sudo systemctl set-default graphical.target
 sudo reboot
 
 #start GUI withour reboot
-sudo systemctl start diplay-manager
+sudo systemctl start display-manager
 or
 sudo systemctl isolate graphical.target
 
